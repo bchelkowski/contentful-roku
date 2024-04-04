@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<component name="ContentfulRequest" extends="Task">
+  <interface>
+    <!-- Options -->
+    <field id="accessToken" type="string" />
+    <field id="baseUrl" type="string" />
+    <field id="body" type="assocArray" />
+    <field id="headers" type="assocArray" value="{}" />
+    <field id="method" type="string" value="GET" />
+    <field id="path" type="string" />
+    <field id="queryParams" type="assocArray" />
+    <field id="timeout" type="integer" value="30000" />
+
+    <!-- Result -->
+    <field id="result" type="assocArray" />
+  </interface>
+
+  <script type="text/brightscript" uri="Contentful.request.brs" />
+</component>

@@ -1,0 +1,49 @@
+{
+  "name": "contentful-roku",
+  "version": "0.1.0",
+  "description": "BrightScript Contentful SDK",
+  "keywords": [
+    "brightscript",
+    "kopytko",
+    "kopytko-module",
+    "contentful",
+    "roku"
+  ],
+  "author": "Błażej Chełkowski <blazej.chelkowski@outlook.com>",
+  "files": [
+    "src",
+    "!**/_tests"
+  ],
+  "scripts": {
+    "lint": "eslint --ext .brs src/"
+  },
+  "dependencies": {
+    "@dazn/kopytko-utils": "^2.6.0"
+  },
+  "devDependencies": {
+    "@dazn/eslint-plugin-kopytko": "^2.1.0",
+    "eslint": "8.57.0"
+  },
+  "license": "MIT",
+  "kopytkoModuleDir": "src/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bchelkowski/contentful-roku.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bchelkowski/contentful-roku/issues"
+  },
+  "release": {
+    "branches": [
+      "main"
+    ],
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/changelog",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ]
+  }
+}
