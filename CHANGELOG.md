@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/bchelkowski/contentful-roku/compare/v1.0.0...v1.1.0) (2024-06-19)
+
+
+### Features
+
+* parse response according to contentful-resolve-response ([85f7764](https://github.com/bchelkowski/contentful-roku/commit/85f77645d1ff0f925fb72afad192535bdbbffa5c))
+
 # 1.0.0 (2024-04-04)
 
 
