@@ -1,3 +1,5 @@
+' @import /components/libs/ContentfulResponse.brs
+
 sub init()
   m._ERROR_CODE = 400
   m._HTTP_REQUEST_COMPLETED = 1
@@ -79,7 +81,10 @@ end sub
 
 function _parseResponse(responseString as String) as Dynamic
   try
-    return ParseJson(responseString)
+    return ContentfulResponse(responseString).parse({
+      itemEntryPoints: m.top.itemEntryPoints,
+      removeUnresolved: m.top.removeUnresolved,
+    })
   catch _error
     return responseString
   end try
