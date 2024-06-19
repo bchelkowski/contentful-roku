@@ -2,14 +2,14 @@
 ' @import /components/getProperty.brs from @dazn/kopytko-utils
 ' @import /components/getType.brs from @dazn/kopytko-utils
 
-function ContentfulResponse(response as Object) as Object
+function ContentfulResponse(response as String) as Object
   prototype = {}
 
   prototype._arrayUtils = ArrayUtils()
   prototype._response = Invalid
 
-  _constructor = function (context as Object, response as Object) as Object
-    context._response = response
+  _constructor = function (context as Object, response as String) as Object
+    context._response = ParseJSON(response)
 
     return context
   end function
@@ -21,7 +21,6 @@ function ContentfulResponse(response as Object) as Object
     allEntries = []
     allIncludes = []
     includes = getProperty(m._response, "includes", {})
-    response = ParseJSON(m._response)
 
     for each includeKey in includes
       for each item in includes[includeKey]
@@ -29,7 +28,7 @@ function ContentfulResponse(response as Object) as Object
       end for
     end for
 
-    allEntries.append(response.items)
+    allEntries.append(m._response.items)
     allEntries.append(allIncludes)
     allEntries = m._arrayUtils.filter(allEntries, function (entity = {} as Object) as Boolean
       return entity.sys <> Invalid
@@ -52,7 +51,7 @@ function ContentfulResponse(response as Object) as Object
     m._entityMap = Invalid
     m._parseOptions = Invalid
   
-    return response.items
+    return m._response
   end function
 
   prototype._predicate = function (item as Object) as Boolean
