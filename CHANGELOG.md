@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/bchelkowski/contentful-roku/compare/v1.1.0...v1.1.1) (2024-06-19)
+
+
+### Bug Fixes
+
+* parse string instead of object ([db82b06](https://github.com/bchelkowski/contentful-roku/commit/db82b0627368b777e3fb2a52e868dbc5855c3bab))
+
 # [1.1.0](https://github.com/bchelkowski/contentful-roku/compare/v1.0.0...v1.1.0) (2024-06-19)
 
 
