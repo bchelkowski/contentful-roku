@@ -2,26 +2,29 @@ name: Release
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+      issues: write
+      pull-requests: write
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: '.nvmrc'
-          cache: 'npm'
+        uses: actions/checkout@v5
       - name: Semantic Release
         id: release
-        uses: cycjimmy/semantic-release-action@v4
+        uses: codfish/semantic-release-action@v5
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          extra_plugins: |
-            @semantic-release/changelog@6
-            @semantic-release/git@10
+          plugins: |
+            [
+              '@semantic-release/commit-analyzer',
+              '@semantic-release/release-notes-generator',
+              ['@semantic-release/npm', { npmPublish: true, provenance: true }],
+              '@semantic-release/github'
+            ]
