@@ -252,7 +252,7 @@ sub contentfulSDK_onRequestResult(event as Object)
   if (result.data <> Invalid)
     m["$$ContentfulSDK"]._requests[result.id].promise.resolve(result.data)
   else
-    m["$$ContentfulSDK"]._requests[result.id].promise.reject()
+    m["$$ContentfulSDK"]._requests[result.id].promise.reject(result)
   end if
 
   m["$$ContentfulSDK"]._requests[result.id].request.unobserveFieldScoped("result")
